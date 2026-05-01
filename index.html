@@ -1,164 +1,199 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Influmetric</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0B0B0F;
-      color: #ffffff;
-      line-height: 1.6;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>INFLUMETRIC</title>
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 60px 20px;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
-    }
+<style>
+body{
+  margin:0;
+  font-family:Inter;
+  background:#05060a;
+  color:#fff;
+}
 
-    h2 {
-      font-size: 24px;
-      color: #a5b4fc;
-      font-weight: normal;
-      margin-bottom: 30px;
-    }
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:80px 20px;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 14px 24px;
-      background: #4f46e5;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-top: 20px;
-    }
+/* HERO */
+.hero{
+  text-align:center;
+  padding:120px 20px 60px;
+}
+.hero h1{
+  font-size:60px;
+}
+.hero p{
+  color:#9ca3af;
+  max-width:600px;
+  margin:auto;
+}
+.btn{
+  display:inline-block;
+  margin-top:20px;
+  padding:12px 22px;
+  background:linear-gradient(135deg,#4f46e5,#a855f7);
+  border-radius:10px;
+  color:#fff;
+  text-decoration:none;
+}
 
-    section {
-      margin: 80px 0;
-    }
+/* GRID */
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  align-items:center;
+}
+.grid4{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
 
-    .card {
-      background: #111218;
-      padding: 20px;
-      border-radius: 12px;
-      margin: 10px 0;
-    }
+/* CARDS */
+.card{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:14px;
+}
 
-    .muted {
-      color: #9ca3af;
-    }
+/* MOCK IMAGE */
+.mock{
+  height:280px;
+  background:linear-gradient(135deg,#111827,#0b0b0f);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#6b7280;
+  font-size:14px;
+}
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #6b7280;
-      border-top: 1px solid #1f2937;
-    }
-  </style>
+/* SECTION */
+section{margin:100px 0;}
+h2{font-size:32px;margin-bottom:20px;}
+.muted{color:#9ca3af;}
+
+@media(max-width:900px){
+  .grid2,.grid4{grid-template-columns:1fr;}
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
-
-  <!-- HERO -->
-  <section>
-    <h1>INFLUMETRIC</h1>
-    <h2>Creator Ekonomisi için Veri Zekâsı</h2>
-    <p class="muted">
-      Sosyal medya verilerini analiz ederek creator’lar, ajanslar ve markalar için büyüme odaklı stratejik içgörüler üretiriz.
-    </p>
-
-    <a class="btn" href="mailto:batur@influmetric.com">
-      Demo Görüşmesi Planla
-    </a>
-  </section>
-
-  <!-- PROBLEM -->
-  <section>
-    <h2>Problem</h2>
-    <div class="card">
-      Creator’lar ve ajanslar:
-      <ul>
-        <li>Performansı net ölçemiyor</li>
-        <li>İçerik kararlarını sezgiyle veriyor</li>
-        <li>Büyümeyi sistematik yönetemiyor</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- COS -->
-  <section>
-    <h2>Creator Optimization System (COS)</h2>
-    <div class="card">
-      COS, creator performansını analiz eden özel bir veri sistemidir.<br><br>
-
-      Analiz edilenler:
-      <ul>
-        <li>İçerik performansı</li>
-        <li>Kitle davranışı</li>
-        <li>Büyüme sinyalleri</li>
-        <li>Stratejik fırsatlar</li>
-      </ul>
-
-      <p class="muted">
-        COS detayları yalnızca demo görüşmelerinde paylaşılır.
-      </p>
-    </div>
-  </section>
-
-  <!-- SOLUTIONS -->
-  <section>
-    <h2>Çözümler</h2>
-
-    <div class="card">Creator Insights Dashboard</div>
-    <div class="card">Haftalık Performans Raporları</div>
-    <div class="card">İçerik Analiz Sistemi</div>
-    <div class="card">Stratejik Büyüme Danışmanlığı</div>
-
-  </section>
-
-  <!-- AUDIENCE -->
-  <section>
-    <h2>Kimler için?</h2>
-
-    <div class="card">
-      <b>Creatorlar</b><br>
-      Influencer’lar, YouTuber’lar, TikTok içerik üreticileri, kişisel marka kuranlar
-    </div>
-
-    <div class="card">
-      <b>Ajanslar & Markalar</b><br>
-      Influencer marketing ajansları, dijital pazarlama ekipleri, creator ile çalışan markalar
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section>
-    <h2>Büyüme sistemini birlikte kurmak ister misin?</h2>
-
-    <p class="muted">
-      Demo görüşmesi planla ve COS’un markana nasıl uygulanacağını keşfet.
-    </p>
-
-    <a class="btn" href="mailto:batur@influmetric.com">
-      Demo Planla
-    </a>
-  </section>
-
+<!-- HERO -->
+<div class="hero">
+  <h1>INFLUMETRIC</h1>
+  <p>Creator Ekonomisi için Veri Zekâsı Platformu</p>
+  <a class="btn" href="mailto:batur@influmetric.com">COS Demo Talep Et</a>
 </div>
 
-<footer>
-  INFLUMETRIC — Creator Ekonomisi için Veri Zekâsı
-</footer>
+<div class="container">
+
+<!-- BİZ KİMİZ -->
+<section class="grid2">
+  <div>
+    <h2>Biz Kimiz?</h2>
+    <p class="muted">
+      INFLUMETRIC, creator performansını analiz eden ve büyüme stratejilerini veri ile yönlendiren bir teknoloji platformudur.
+    </p>
+  </div>
+  <div class="mock">📊 Platform Görünümü</div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <h2>Problem</h2>
+  <div class="grid4">
+    <div class="card">📉 Performans ölçülemiyor</div>
+    <div class="card">🧠 Kararlar sezgisel</div>
+    <div class="card">📊 Veri analiz edilmiyor</div>
+    <div class="card">🚀 Büyüme sistematik değil</div>
+  </div>
+</section>
+
+<!-- COS -->
+<section class="grid2">
+  <div>
+    <h2>COS (Creator Optimization System)</h2>
+    <div class="card">📊 İçerik performans analizi</div>
+    <div class="card">👥 Kitle davranışı modelleme</div>
+    <div class="card">📈 Growth sinyalleri</div>
+    <div class="card">🎯 Stratejik fırsatlar</div>
+  </div>
+  <div class="mock">⚙️ COS Engine Visualization</div>
+</section>
+
+<!-- MODÜLLER -->
+<section>
+  <h2>Sistem Modülleri</h2>
+
+  <div class="grid4">
+    <div class="card">
+      📊 Dashboard<br>
+      <div class="mock" style="height:120px;margin-top:10px;">UI</div>
+    </div>
+
+    <div class="card">
+      ⚡ Growth Engine<br>
+      <div class="mock" style="height:120px;margin-top:10px;">Signals</div>
+    </div>
+
+    <div class="card">
+      📄 Weekly Reports<br>
+      <div class="mock" style="height:120px;margin-top:10px;">Reports</div>
+    </div>
+
+    <div class="card">
+      🎯 Strategy Layer<br>
+      <div class="mock" style="height:120px;margin-top:10px;">Strategy</div>
+    </div>
+  </div>
+</section>
+
+<!-- KİMLER İÇİN -->
+<section>
+  <h2>Kimler İçin?</h2>
+
+  <div class="grid2">
+
+    <div class="card">
+      <h3>Creator’lar</h3>
+      <p class="muted">
+        Influencer’lar, YouTuber’lar ve içerik üreticileri için veri odaklı büyüme sistemi.
+      </p>
+      <div class="mock" style="height:120px;">Creator UI</div>
+    </div>
+
+    <div class="card">
+      <h3>Ajanslar</h3>
+      <p class="muted">
+        Influencer marketing ve dijital ekipler için performans ve ROI analizi.
+      </p>
+      <div class="mock" style="height:120px;">Agency UI</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="text-align:center;">
+  <h2>Veri ile büyümek ister misin?</h2>
+  <p class="muted">15 dakikalık demo görüşmesi planla</p>
+  <a class="btn" href="mailto:batur@influmetric.com">Demo Talep Et</a>
+</section>
+
+</div>
 
 </body>
 </html>
