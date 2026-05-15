@@ -1,306 +1,449 @@
 <!DOCTYPE html>
-<html lang="tr">
-  <head>
+<html lang="tr" class="smooth-scroll">
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>INFLUMETRIC | Data Intelligence for the Creator Economy</title>
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-        background-color: #0f172a; /* Çok koyu lacivert/siyah */
-      }
-      .gradient-dark {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      }
-      .glass {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-      }
-      .package-card:hover {
-        border-color: #3b82f6;
-        transform: translateY(-5px);
-        transition: all 0.3s ease;
-      }
-      .smooth-scroll {
-        scroll-behavior: smooth;
-      }
-      .text-glow {
-        text-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-      }
-    </style>
-  </head>
-  <body class="leading-normal tracking-normal text-gray-200 smooth-scroll">
     
-    <!-- Navigasyon -->
-    <nav id="header" class="fixed w-full z-50 top-0 text-white transition-all duration-300 py-4">
-      <div class="w-full container mx-auto flex flex-wrap items-center justify-between px-6">
-        <div class="flex items-center">
-          <a class="text-white no-underline hover:no-underline font-extrabold text-2xl lg:text-3xl tracking-tighter" href="#">
-            INFLUMETRIC<span class="text-blue-500">.</span>
-          </a>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#3b82f6',
+                            dark: '#0A0A0B',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0A0A0B; color: #E4E4E7; overflow-x: hidden; }
+        
+        .bg-gradient-blur {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 35%),
+                        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 35%);
+            z-index: -1;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .package-card:hover {
+            background: rgba(59, 130, 246, 0.05);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.1);
+            transform: translateY(-8px);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+        }
+
+        .hero-title {
+            line-height: 1.1;
+            padding-right: 0.15em; 
+            margin-right: -0.1em;
+            position: relative;
+            z-index: 20;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .animate-float { animation: float 6s ease-in-out infinite; }
+
+        .feature-icon {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(59, 130, 246, 0));
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .nav-link {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            font-style: italic;
+            color: #9CA3AF;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #FFFFFF;
+            letter-spacing: 0.3em;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-blue-500/30 font-sans">
+    
+    <div class="bg-gradient-blur"></div>
+
+    <nav id="header" class="fixed w-full z-50 top-0 transition-all duration-500 py-6 px-8">
+        <div class="container mx-auto flex items-center justify-between">
+            <a class="text-white font-black text-2xl tracking-tighter italic uppercase flex items-center gap-1" href="#">
+                INFLUMETRIC<span class="text-blue-500">.</span>
+            </a>
+            <div class="hidden lg:flex items-center space-x-12">
+                <a class="nav-link" href="#platform">Platform</a>
+                <a class="nav-link" href="#cos">COS® Altyapısı</a>
+                <a class="nav-link" href="#paketler">Çözümler</a>
+                <a href="https://calendly.com/destek-getinflumetric/30min" target="_blank" 
+                   class="px-8 py-3 bg-blue-600 text-white text-[11px] font-black uppercase tracking-widest rounded-xl hover:bg-blue-700 transition-all shadow-lg shadow-blue-600/20 italic">
+                    DEMO TALEBİ
+                </a>
+            </div>
         </div>
-        <div class="block lg:hidden">
-          <button id="nav-toggle" class="flex items-center p-1 text-gray-400 hover:text-white">
-            <svg class="fill-current h-6 w-6" viewBox="0 0 20 20"><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
-          </button>
-        </div>
-        <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 z-20" id="nav-content">
-          <ul class="list-reset lg:flex justify-end flex-1 items-center">
-            <li class="mr-6"><a class="hover:text-blue-400 transition-colors font-medium" href="#cos">COS®</a></li>
-            <li class="mr-6"><a class="hover:text-blue-400 transition-colors font-medium" href="#vizyon">Vizyon</a></li>
-            <li class="mr-6"><a class="hover:text-blue-400 transition-colors font-medium" href="#paketler">Paketler</a></li>
-          </ul>
-          <a href="https://calendly.com/destek-getinflumetric/30min" 
-   target="_blank" 
-   class="inline-block px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-full transition-all text-sm uppercase whitespace-nowrap">
-   Demo Talebi
-</a>
-        </div>
-      </div>
     </nav>
     
-    <!-- Hero Bölümü -->
-    <div class="pt-32 pb-20 relative overflow-hidden">
-      <div class="container px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center relative z-10">
-        <div class="flex flex-col w-full md:w-1/2 justify-center items-start text-center md:text-left">
-          <div class="bg-blue-900 bg-opacity-30 text-blue-400 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-blue-800">
-            Next-Gen Data Intellıgence
-          </div>
-          <h1 class="my-4 text-5xl md:text-7xl font-extrabold leading-tight text-white">
-            Creator Ekonomisini <br/><span class="text-blue-500 text-glow">Veriyle Yönetin.</span>
-          </h1>
-          <p class="leading-normal text-xl md:text-2xl mb-8 text-gray-400 max-w-lg">
-            Dağınık sosyal medya metriklerini anlamlı büyüme sinyallerine dönüştüren hibrit teknoloji altyapısı.
-          </p>
-          <div class="flex space-x-4">
-             <a href="#paketler" 
-   class="px-10 py-4 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl transition-all text-lg uppercase tracking-wide shadow-2xl shadow-blue-500/20 inline-block">
-   ŞİMDİ KEŞFEDİN
-</a>
-          </div>
-        </div>
-        <div class="w-full md:w-1/2 py-12 text-center relative">
-           <img class="w-full md:w-[115%] max-w-none md:ml-16 mx-auto drop-shadow-[0_20px_60px_rgba(59,130,246,0.25)] animate-float" src="hero.png" alt="Influmetric Stratejik Veri Raporu" />
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-500 rounded-full blur-[100px] opacity-40 z-0 pointer-events-none"></div>
-      </div>
-    </div>
-
-    <!-- COS - Black Box Bölümü -->
-    <section id="cos" class="py-24 glass">
-      <div class="container mx-auto px-6">
-        <div class="flex flex-wrap items-center">
-          <div class="w-full md:w-1/2 mb-12 md:mb-0">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-              COS®: <br/>Creator Optimization System
-            </h2>
-            <div class="h-1 w-20 bg-blue-600 mb-8"></div>
-            <p class="text-xl text-gray-300 mb-8 leading-relaxed">
-              COS®, rastgele bir veri çekme aracı değildir. Platformumuzun kalbinde yer alan bu <strong>Black-Box</strong> altyapı, sosyal medya ekosisteminden gelen <strong>48 farklı veri sinyalini</strong> anlık olarak işler.
-            </p>
-            <div class="space-y-4">
-              <div class="flex items-center">
-                <div class="bg-blue-600 rounded-full p-2 mr-4">
-                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+    <section class="relative pt-64 pb-32">
+        <div class="container px-8 mx-auto flex flex-col md:flex-row items-center relative z-10">
+            <div class="w-full md:w-3/5 space-y-8 text-center md:text-left z-20">
+                <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-500/5 border border-blue-500/10">
+                    <span class="text-[9px] font-black uppercase tracking-[0.4em] text-blue-400 italic">Data Intelligence for the Creator Economy</span>
                 </div>
-                <span class="text-lg font-semibold text-gray-100">Algoritmik Filtreleme ve Hibrit Analiz</span>
-              </div>
-              <div class="flex items-center">
-                <div class="bg-blue-600 rounded-full p-2 mr-4">
-                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                
+                <h1 class="hero-title text-6xl md:text-7xl font-black text-white italic tracking-tighter uppercase">
+                    İÇERİK EKOSİSTEMİNİ <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 text-glow inline-block pb-2">VERİYLE YÖNETİN.</span>
+                </h1>
+                
+                <p class="text-gray-400 text-lg md:text-2xl font-medium max-w-2xl leading-relaxed italic">
+                    Belirsizliğe yer yok. <span class="text-white">COS® altyapısı</span> ile sosyal medya dinamiklerini büyüme odaklı birer finansal varlığa dönüştürüyoruz.
+                </p>
+                
+                <div class="pt-6">
+                    <a href="#paketler" class="px-12 py-5 bg-white text-black font-black rounded-2xl transition-all text-sm uppercase tracking-[0.2em] italic hover:bg-blue-600 hover:text-white shadow-2xl">
+                        SİSTEMİ BAŞLATIN
+                    </a>
                 </div>
-                <span class="text-lg font-semibold text-gray-100">Uzman Kadro Tarafından Manuel Elemeler</span>
-              </div>
-              <div class="flex items-center">
-                <div class="bg-blue-600 rounded-full p-2 mr-4">
-                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <span class="text-lg font-semibold text-gray-100">Stratejik Büyüme Sinyalleri (Weekly Intelligence)</span>
-              </div>
             </div>
-          </div>
-          <div class="w-full md:w-1/2 md:pl-20">
-            <div class="p-10 rounded-3xl border border-blue-500 border-opacity-30 bg-blue-900 bg-opacity-10">
-               <h4 class="text-blue-400 font-bold mb-4 tracking-tighter uppercase">Teknik Arka Plan</h4>
-               <p class="text-gray-400 italic">"COS®, ham veriyi alır; kitle davranışı, içerik doygunluğu ve trend ivmesi gibi parametrelerle çaprazlayarak size yalnızca uygulamanız gereken aksiyonu sunar. Sistem mimarisine dair teknik detaylar ve operasyonel işleyiş, kurumsal güvenlik politikalarımız gereği doğrudan iş ortaklarımıza sunulmaktadır."</p>
+            
+            <div class="w-full md:w-2/5 mt-20 md:mt-0 relative animate-float">
+                <img class="w-full h-auto scale-125 md:scale-150 origin-center drop-shadow-[0_0_80px_rgba(59,130,246,0.15)]" src="hero.png" alt="Influmetric Platform" />
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- Neden Veri Odaklı Strateji? -->
-    <section id="vizyon" class="py-24 bg-black bg-opacity-20">
-      <div class="container mx-auto px-6 text-center">
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-10">Neden Veri Odaklı Strateji?</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
-          <div class="glass p-10 rounded-2xl">
-            <div class="text-4xl mb-6">🎯</div>
-            <h3 class="text-2xl font-bold text-white mb-4">Hassas Hedefleme</h3>
-            <p class="text-gray-400 text-lg leading-relaxed">Kitlenizin sadece nerede olduğunu değil, ne zaman ve neden orada olduğunu bilerek içerik üretin.</p>
-          </div>
-          <div class="glass p-10 rounded-2xl">
-            <div class="text-4xl mb-6">📉</div>
-            <h3 class="text-2xl font-bold text-white mb-4">Risk Optimizasyonu</h3>
-            <p class="text-gray-400 text-lg leading-relaxed">Yanlış içerik tiplerine zaman harcamayı bırakın. COS® ile tutma oranı en yüksek formatlara odaklanın.</p>
-          </div>
-          <div class="glass p-10 rounded-2xl">
-            <div class="text-4xl mb-6">💎</div>
-            <h3 class="text-2xl font-bold text-white mb-4">Piyasa Değeri</h3>
-            <p class="text-gray-400 text-lg leading-relaxed">İş birliklerinde elinizi güçlendirin. Markalara boş vaatler değil, doğrulanmış veriler sunun.</p>
-          </div>
+    <section class="py-24 border-y border-white/5 bg-blue-500/[0.02]">
+        <div class="container mx-auto px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-16">
+                <div class="md:w-1/2">
+                    <h4 class="text-4xl font-black text-white italic uppercase tracking-tighter mb-6">
+                        Global Standartlar, <br/><span class="text-blue-500">Yerel Hakimiyet.</span>
+                    </h4>
+                    <p class="text-gray-400 font-medium italic leading-relaxed text-lg border-l-2 border-blue-600 pl-6">
+                        Uluslararası veri işleme tecrübemizi, Türkiye pazarının özgün dinamikleriyle birleştirdik. Global teknolojiyi yerel içerik ekosistemi için %100 optimize ederek yüksek güven inşa ediyoruz.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-12 md:w-1/2 justify-items-end">
+                    <div class="text-right">
+                        <div class="text-white text-4xl font-black italic tracking-tighter mb-2">120M+</div>
+                        <div class="text-[10px] text-blue-500 font-black uppercase tracking-[0.4em]">İşlenen Veri</div>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-white text-4xl font-black italic tracking-tighter mb-2">NATIVE</div>
+                        <div class="text-[10px] text-blue-500 font-black uppercase tracking-[0.4em]">TR Algoritma</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section id="paketler" class="py-20 relative">
-  <div class="container mx-auto px-6">
-    
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-black text-white mb-4 uppercase tracking-wide font-bold">Çözüm Modelleri</h2>
-      <p class="text-lg md:text-xl text-gray-300 font-medium max-w-2xl mx-auto">Dijital varlığınız için optimize edilmiş strateji paketlerini keşfedin.</p>
-    </div>
-    
-    <div class="flex flex-wrap justify-center gap-6">
-      
-      <div class="w-full max-w-sm md:w-80 glass p-8 rounded-3xl border border-gray-800 flex flex-col hover:border-blue-500/50 transition-colors">
-        <h3 class="text-3xl font-bold text-white mb-1 uppercase tracking-tight">Bireysel</h3>
-        <span class="text-blue-400 text-sm italic font-medium lowercase mb-6">(influencer)</span>
-        
-        <p class="text-gray-400 text-xs leading-relaxed mb-6">
-          Dijital varlığını profesyonel bir markaya dönüştürmek isteyen tüm üreticiler için veriye dayalı büyüme çözümleri.
-        </p>
-
-        <ul class="text-gray-300 space-y-3 mb-8 text-xs border-t border-gray-800 pt-6 flex-grow">
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Hesap Verimlilik Analizi</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> İçerik Sinyal Optimizasyonu</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> 48+ Veri Sinyali Analizi</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Haftalık Büyüme Raporu</li>
-        </ul>
-
-        <a href="https://calendly.com/destek-getinflumetric/30min" target="_blank" class="w-full py-3 border border-blue-600 text-blue-500 font-bold rounded-xl hover:bg-blue-600 hover:text-white transition-all text-sm uppercase text-center block">
-          Demo Talebi
-        </a>
-      </div>
-
-      <div class="w-full max-w-sm md:w-80 glass p-8 rounded-3xl border-2 border-blue-600 relative flex flex-col shadow-xl shadow-blue-900/20">
-        <div class="absolute -top-3 right-6 bg-blue-600 text-white px-3 py-1 text-[10px] font-bold rounded-full uppercase tracking-widest shadow-lg shadow-blue-900/50">
-          Partner
+    <section id="platform" class="py-32 relative">
+        <div class="container mx-auto px-8">
+            <div class="mb-20">
+                <h2 class="text-[11px] font-black text-blue-500 uppercase tracking-[0.4em] mb-4 italic">Mühendislik ve Strateji Ekibimizin Gücüyle</h2>
+                <h3 class="text-5xl font-black text-white italic tracking-tighter uppercase">Platform <br/>Yetenekleri</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-8 glass-card rounded-[2rem]">
+                    <div class="w-10 h-10 feature-icon rounded-xl mb-6 flex items-center justify-center text-blue-500 font-black text-xs">AI</div>
+                    <h4 class="text-lg font-black text-white italic uppercase mb-3 tracking-tighter">İleri Analitik</h4>
+                    <p class="text-gray-500 text-[12px] font-bold uppercase italic leading-relaxed">Makine öğrenmesi modelleri ile hesap büyüme projeksiyonlarını kesin verilerle simüle edin.</p>
+                </div>
+                <div class="p-8 glass-card rounded-[2rem]">
+                    <div class="w-10 h-10 feature-icon rounded-xl mb-6 flex items-center justify-center text-blue-500 font-black text-xs">RT</div>
+                    <h4 class="text-lg font-black text-white italic uppercase mb-3 tracking-tighter">Anlık İzleme</h4>
+                    <p class="text-gray-500 text-[12px] font-bold uppercase italic leading-relaxed">Platformlar arası sinyalleri tek bir merkezden eş zamanlı olarak takip edin.</p>
+                </div>
+                <div class="p-8 glass-card rounded-[2rem]">
+                    <div class="w-10 h-10 feature-icon rounded-xl mb-6 flex items-center justify-center text-blue-500 font-black text-xs">CI</div>
+                    <h4 class="text-lg font-black text-white italic uppercase mb-3 tracking-tighter">Rakip İstihbaratı</h4>
+                    <p class="text-gray-500 text-[12px] font-bold uppercase italic leading-relaxed">Pazar payınızı korumak için rakiplerin stratejik hamlelerini anında deşifre edin.</p>
+                </div>
+                <div class="p-8 glass-card rounded-[2rem] border-blue-500/20 bg-blue-500/[0.03]">
+                    <div class="w-10 h-10 feature-icon rounded-xl mb-6 flex items-center justify-center text-blue-500 font-black text-xs">IN</div>
+                    <h4 class="text-lg font-black text-white italic uppercase mb-3 tracking-tighter">Deep Intelligence</h4>
+                    <p class="text-gray-500 text-[12px] font-bold uppercase italic leading-relaxed">Sentiment analizi, trend kümeleme ve <span class="text-blue-400 underline underline-offset-4 decoration-blue-500/40 font-black">çok daha fazla</span> veri katmanı.</p>
+                </div>
+            </div>
         </div>
-        
-        <h3 class="text-3xl font-bold text-white mb-1 uppercase tracking-tight">Ajans</h3>
-        <span class="text-blue-400 text-sm italic font-medium lowercase mb-6">(agency)</span>
+    </section>
 
-        <p class="text-gray-400 text-xs leading-relaxed mb-6">
-          Yetenek yönetimi ve medya ajansları için çoklu hesap takibi ve merkezi veri yönetimi sistemleri.
-        </p>
-
-        <ul class="text-gray-300 space-y-3 mb-8 text-xs border-t border-gray-800 pt-6 flex-grow font-semibold">
-          <li class="flex items-center text-blue-100"><span class="text-blue-500 mr-2">✓</span> Toplu Portföy Yönetimi</li>
-          <li class="flex items-center text-blue-100"><span class="text-blue-500 mr-2">✓</span> White-Label Raporlama</li>
-          <li class="flex items-center text-blue-100"><span class="text-blue-500 mr-2">✓</span> Merkezi Trend Analizi</li>
-          <li class="flex items-center text-blue-100"><span class="text-blue-500 mr-2">✓</span> Kurumsal Danışmanlık</li>
-        </ul>
-
-        <a href="https://calendly.com/destek-getinflumetric/30min" target="_blank" class="w-full py-3 border border-blue-600 text-blue-500 font-bold rounded-xl hover:bg-blue-600 hover:text-white transition-all text-sm uppercase text-center block">
-          Demo Talebi
-        </a>
-      </div>
-
-      <div class="w-full max-w-sm md:w-80 glass p-8 rounded-3xl border border-gray-800 flex flex-col hover:border-blue-500/50 transition-colors">
-        <h3 class="text-3xl font-bold text-white mb-1 uppercase tracking-tight">Marka</h3>
-        <span class="text-blue-400 text-sm italic font-medium lowercase mb-6">(brand / e-com)</span>
-        
-        <p class="text-gray-400 text-xs leading-relaxed mb-6">
-          Ürün ve hizmetlerini doğru kitlelerle buluşturmak ve kampanya ROI verimliliğini artırmak isteyen işletmeler için.
-        </p>
-
-        <ul class="text-gray-300 space-y-3 mb-8 text-xs border-t border-gray-800 pt-6 flex-grow">
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Doğru Partner Eşleşmesi</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Kampanya ROI Analizi</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Rakip ve Pazar Analizi</li>
-          <li class="flex items-center"><span class="text-blue-500 mr-2">✓</span> Dönüşüm Odaklı Strateji</li>
-        </ul>
-
-        <a href="https://calendly.com/destek-getinflumetric/30min" target="_blank" class="w-full py-3 border border-blue-600 text-blue-500 font-bold rounded-xl hover:bg-blue-600 hover:text-white transition-all text-sm uppercase text-center block">
-          Demo Talebi
-        </a>
-      </div>
-
-    </div>
-
-    <div class="mt-12 text-center">
-      <p class="text-gray-500 italic text-xs">
-        Bireysel, ajans ve marka odaklı çözüm modellerimiz; veri trafiği, hesap hacmi ve stratejik büyüme hedeflerinize göre yapılandırılır.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-    <!-- Footer -->
-    <footer class="py-16 border-t border-gray-900">
-      <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-gray-500">
-        <div class="mb-8 md:mb-0">
-          <div class="text-white font-bold text-2xl mb-4">INFLUMETRIC<span class="text-blue-500">.</span></div>
-          <p class="max-w-xs">Data Intelligence for the Creator Economy. Veri ile büyüme artık bir seçenek değil, zorunluluk.</p>
+    <section class="py-32 relative overflow-hidden bg-white/[0.01]">
+        <div class="container mx-auto px-8">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-5xl font-black text-white italic uppercase tracking-tighter mb-20 text-center">Neden Veri Odaklı <span class="text-blue-500">Strateji?</span></h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 text-[14px]">
+                    <div class="flex gap-4 items-start">
+                        <span class="text-blue-500 font-black text-2xl italic">01</span>
+                        <div>
+                            <h5 class="text-white font-black italic uppercase text-[15px] mb-2 tracking-tighter">Algoritma Sinyalleri</h5>
+                            <p class="text-gray-400 font-medium italic leading-relaxed">Duyguları değil, algoritmanın matematiksel beklentilerini rasyonel metriklerle karşılar.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <span class="text-blue-500 font-black text-2xl italic">02</span>
+                        <div>
+                            <h5 class="text-white font-black italic uppercase text-[15px] mb-2 tracking-tighter">Risk Yönetimi</h5>
+                            <p class="text-gray-400 font-medium italic leading-relaxed">Yatırımınızın (ROI) sonucunu yüksek doğrulukla modelleyerek bütçe riskini ortadan kaldırır.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <span class="text-blue-500 font-black text-2xl italic">03</span>
+                        <div>
+                            <h5 class="text-white font-black italic uppercase text-[15px] mb-2 tracking-tighter">Sürdürülebilirlik</h5>
+                            <p class="text-gray-400 font-medium italic leading-relaxed">Geçici viral trendler yerine uzun vadeli ve ölçeklenebilir bir büyüme yapısı inşa eder.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <span class="text-blue-500 font-black text-2xl italic">04</span>
+                        <div>
+                            <h5 class="text-white font-black italic uppercase text-[15px] mb-2 tracking-tighter">Rekabet Üstünlüğü</h5>
+                            <p class="text-gray-400 font-medium italic leading-relaxed">Rakiplerinizin "deneme-yanılma" yaptığı noktada sizin elinizde net bir yol haritası olur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="flex space-x-12">
-          <div>
-            <h5 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Şirket</h5>
-            <ul class="space-y-2 text-sm">
-              <li>
-  <a href="https://www.linkedin.com/company/getinflumetric/" 
-     target="_blank" 
-     class="hover:text-white transition-colors">
-     Hakkımızda
-  </a>
-</li>
-              <li>
-  <a href="mailto:destek@getinflumetric.com?subject=Influmetric%20İletişim" 
-     class="hover:text-white transition-colors">
-     İletişim
-  </a>
-</li>
-            </ul>
-          </div>
-          <div>
-  <h5 class="text-white font-bold mb-4 uppercase text-xs tracking-widest">Yasal</h5>
-  <ul class="space-y-2 text-sm">
-    <li>
-      <a href="kvkk.pdf" target="_blank" class="hover:text-white transition-colors">
-        KVKK Aydınlatma Metni
-      </a>
-    </li>
-    <li>
-  <a href="kullanim.pdf" target="_blank" class="hover:text-white transition-colors">
-    Kullanım Şartları
-  </a>
-</li>
-  </ul>
-</div>
+    </section>
+
+    <section id="cos" class="py-40 relative bg-white/[0.02]">
+        <div class="container mx-auto px-8">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="space-y-10">
+                    <h3 class="text-6xl font-black text-white italic tracking-tighter uppercase leading-none">
+                        COS® ZEKÂ <br/><span class="text-blue-500">ÇEKİRDEĞİ</span>
+                    </h3>
+                    <p class="text-gray-400 text-xl font-medium leading-relaxed italic border-l-4 border-blue-600 pl-8">
+                        COS (Creator Optimization System), binlerce veri noktasını çaprazlayarak size sadece durumu raporlamaz; büyümeniz için atmanız gereken bir sonraki stratejik adımı tanımlar.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-6 glass-card rounded-2xl text-center">
+                            <div class="text-blue-500 text-3xl font-black italic mb-1">48+</div>
+                            <div class="text-[9px] text-gray-500 font-black uppercase tracking-widest italic">Veri Kaynağı</div>
+                        </div>
+                        <div class="p-6 glass-card rounded-2xl text-center">
+                            <div class="text-blue-500 text-3xl font-black italic mb-1">%94</div>
+                            <div class="text-[9px] text-gray-500 font-black uppercase tracking-widest italic">Analitik İsabet</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-12 rounded-[4rem] relative overflow-hidden group border-blue-500/20">
+                    <div class="absolute inset-0 bg-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="text-blue-500 font-black text-[10px] uppercase tracking-[0.4em] mb-8 italic">Gizlilik ve Güvenlik</div>
+                    <p class="text-white font-bold italic leading-relaxed uppercase tracking-tight text-lg mb-8">
+                        Sistem mimarisi, tescilli algoritmalar ve operasyonel akışlar; IP güvenliği politikalarımız gereği yalnızca yetkilendirilmiş partnerlerimize açılır.
+                    </p>
+                    <div class="h-[1px] w-full bg-white/5 mb-8"></div>
+                    <p class="text-gray-500 text-[11px] font-bold uppercase italic">Bulut altyapımız <span class="text-white">Cloudflare Enterprise</span> seviyesinde korunmaktadır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="paketler" class="py-40 relative">
+        <div class="container mx-auto px-8">
+            <div class="text-center mb-24">
+                <h2 class="text-7xl font-black text-white italic tracking-tighter uppercase mb-6">ÇÖZÜM <span class="text-blue-500">MODELLERİ</span></h2>
+                <div class="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+                <p class="text-gray-500 text-xs font-black uppercase tracking-[0.5em] italic">Ölçeğinize uygun profesyonel veri yönetimi</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-10">
+                <div class="glass-card package-card p-12 rounded-[3rem] flex flex-col">
+                    <h3 class="text-4xl font-black text-white italic tracking-tighter uppercase mb-2">Bireysel</h3>
+                    <span class="text-blue-500 text-[11px] font-black uppercase tracking-widest italic mb-10">Creator & Influencer</span>
+                    <ul class="space-y-6 mb-12 flex-grow">
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Deep-Scraping Veri Analiz Paneli</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>COS® Sinyal ve Algoritma Optimizasyonu</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Niş Bazlı İçerik Kümeleme (Clustering)</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Kitle Duygu ve Sentiment Analizi</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Hesap & Data Verimlilik Optimizasyonu</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Global Rakip Karşılaştırma Paneli</span>
+                        </li>
+                    </ul>
+                    <a href="https://calendly.com/destek-getinflumetric/30min" target="_blank" class="w-full py-5 border border-blue-500/30 text-blue-500 font-black rounded-2xl hover:bg-blue-600 hover:text-white transition-all text-xs uppercase tracking-widest italic text-center">DEMO TALEBİ</a>
+                </div>
+
+                <div class="glass-card package-card p-12 rounded-[3rem] flex flex-col relative border-blue-500/10">
+                    <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-6 py-2 rounded-full text-[10px] font-black uppercase italic tracking-widest">EN POPÜLER</div>
+                    <h3 class="text-4xl font-black text-white italic tracking-tighter uppercase mb-2 text-glow">Ajans</h3>
+                    <span class="text-blue-500 text-[11px] font-black uppercase tracking-widest italic mb-10">Talent Management & Media</span>
+
+                    <ul class="space-y-6 mb-12 flex-grow">
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-blue-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Tüm Bireysel Veri ve Analiz Yetenekleri</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Merkezi Portföy Yönetim Dashboard'u</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>White-Label Kurumsal Raporlama</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Yetenek Karşılaştırma ve Rekabet Analizi</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Toplu Veri İşleme ve API Entegrasyonu</span>
+                        </li>
+                    </ul>
+                    <a href="https://calendly.com/destek-getinflumetric/30min" target="_blank" class="w-full py-5 bg-blue-600 text-white font-black rounded-2xl hover:bg-white hover:text-black transition-all text-xs uppercase tracking-widest italic text-center">DEMO TALEBİ</a>
+                </div>
+
+                <div class="glass-card package-card p-12 rounded-[3rem] flex flex-col">
+                    <h3 class="text-4xl font-black text-white italic tracking-tighter uppercase mb-2">Marka</h3>
+                    <span class="text-blue-500 text-[11px] font-black uppercase tracking-widest italic mb-10">E-Commerce & Enterprise</span>
+                    <ul class="space-y-6 mb-12 flex-grow">
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>ROI Projeksiyonu ve Dönüşüm Modelleme</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Algoritmik Niş ve Partner Eşleşmesi</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Sektörel Pazar Payı ve Reklam İzleme</span>
+                        </li>
+                        <li class="flex items-start gap-4 text-[11px] font-black uppercase italic text-gray-400 leading-tight">
+                            <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5"></div> 
+                            <span>Full-Stack Pazarlama Veri Yönetimi</span>
+                        </li>
+                    </ul>
+                    <a href="https://calendly.com/destek-getinflumetric/30min" target="_blank" class="w-full py-5 border border-blue-500/30 text-blue-500 font-black rounded-2xl hover:bg-blue-600 hover:text-white transition-all text-xs uppercase tracking-widest italic text-center">DEMO TALEBİ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-white/[0.01] border-y border-white/5">
+        <div class="container mx-auto px-8">
+            <h3 class="text-4xl font-black text-white italic tracking-tighter uppercase mb-16">Sıkça Sorulan <span class="text-blue-500">Sorular</span></h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h5 class="text-white font-black italic uppercase text-sm mb-4">Veriler ne kadar güncel?</h5>
+                        <p class="text-gray-500 text-[11px] font-bold uppercase italic leading-relaxed">Sistemimiz verileri her 15 dakikada bir güncelleyerek anlık trend değişimlerini raporlar.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h5 class="text-white font-black italic uppercase text-sm mb-4">COS® tam olarak nedir?</h5>
+                        <p class="text-gray-500 text-[11px] font-bold uppercase italic leading-relaxed">COS, sadece takip değil; içerik saatinizden stratejinize kadar veriye dayalı kararlar üreten bir optimizasyon motorudur.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h5 class="text-white font-black italic uppercase text-sm mb-4">Güvenlik nasıl sağlanıyor?</h5>
+                        <p class="text-gray-500 text-[11px] font-bold uppercase italic leading-relaxed">Ödemeler iyzico güvencesiyle, veriler ise KVKK standartlarında Cloudflare Enterprise korumasıyla saklanır.</p>
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h5 class="text-white font-black italic uppercase text-sm mb-4">Aylık raporlama sınırsız mı?</h5>
+                        <p class="text-gray-500 text-[11px] font-bold uppercase italic leading-relaxed">Paket türünüze göre belirlenen limitler dahilinde anlık ve periyodik raporlamalar tamamen otomatiktir.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h5 class="text-white font-black italic uppercase text-sm mb-4">Hangi platformları destekliyor?</h5>
+                        <p class="text-gray-500 text-[11px] font-bold uppercase italic leading-relaxed">Şu an Instagram, TikTok ve YouTube platformlarını tüm derinliğiyle analiz ediyoruz.</p>
+                    </div>
+                    <div class="glass-card p-8 rounded-3xl">
+                        <h5 class="text-white font-black italic uppercase text-sm mb-4">Kurumsal entegrasyon var mı?</h5>
+                        <p class="text-gray-500 text-[11px] font-bold uppercase italic leading-relaxed">Marka paketimizde şirket içi dashboard sistemlerine veri aktarımı için özel API desteği sunuyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-24">
+        <div class="container mx-auto px-8 flex flex-col md:flex-row justify-between items-start gap-12">
+            <div class="space-y-6">
+                <div class="text-white font-black text-3xl tracking-tighter italic uppercase">INFLUMETRIC<span class="text-blue-500">.</span></div>
+                <p class="text-gray-600 text-[11px] font-bold uppercase tracking-widest italic max-w-sm leading-relaxed">
+                    Data Intelligence for the Creator Economy. Veri ile büyüme artık bir seçenek değil, sürdürülebilirlik için bir zorunluluktur.
+                </p>
+            </div>
+            <div class="flex gap-20">
+                <div>
+                    <h5 class="text-white font-black text-[10px] uppercase tracking-[0.4em] mb-6 italic">Yasal</h5>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase italic text-gray-500">
+                        <li><a href="kvkk.pdf" target="_blank" class="hover:text-blue-500 transition-colors">KVKK Aydınlatma</a></li>
+                        <li><a href="kullanim.pdf" target="_blank" class="hover:text-blue-500 transition-colors">Kullanım Şartları</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white font-black text-[10px] uppercase tracking-[0.4em] mb-6 italic">Sosyal</h5>
+                    <ul class="space-y-3 text-[11px] font-bold uppercase italic text-gray-500">
+                        <li><a href="https://www.linkedin.com/company/getinflumetric/" target="_blank" class="hover:text-blue-500 transition-colors">LinkedIn</a></li>
+                        <li><a href="mailto:destek@getinflumetric.com" class="hover:text-blue-500 transition-colors">Bize Yazın</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-8 mt-24 pt-8 border-t border-white/5 text-center">
+            <p class="text-gray-700 text-[9px] font-black uppercase tracking-[0.6em] italic">© 2024 INFLUMETRIC INTELLIGENCE. ALL RIGHTS RESERVED.</p>
+        </div>
     </footer>
 
     <script>
-      // Header Kaydırma Efekti
-      window.onscroll = function() {
-        var header = document.getElementById("header");
-        if (window.pageYOffset > 50) {
-          header.classList.add("bg-slate-900", "bg-opacity-95", "shadow-2xl", "py-2");
-          header.classList.remove("py-4");
-        } else {
-          header.classList.remove("bg-slate-900", "bg-opacity-95", "shadow-2xl", "py-2");
-          header.classList.add("py-4");
-        }
-      };
-
-      // Nav Toggle
-      document.getElementById('nav-toggle').onclick = function(){
-        document.getElementById("nav-content").classList.toggle("hidden");
-      }
+        window.onscroll = function() {
+            const header = document.getElementById("header");
+            if (window.pageYOffset > 50) {
+                header.classList.add("bg-[#0A0A0B]/90", "backdrop-blur-2xl", "py-4", "border-b", "border-white/5", "shadow-2xl");
+            } else {
+                header.classList.remove("bg-[#0A0A0B]/90", "backdrop-blur-2xl", "py-4", "border-b", "border-white/5", "shadow-2xl");
+            }
+        };
     </script>
-  </body>
+</body>
 </html>
